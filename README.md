@@ -39,6 +39,7 @@ This project implements a simple key-value store database that communicates over
 
     ```
     minidb/
+    ├── README.md
     ├── src/
     │   ├── data/
     │   │   └── db_data.pkl
