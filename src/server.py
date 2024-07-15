@@ -9,6 +9,15 @@ HOST = '127.0.0.1'  # Localhost
 PORT = 8000         # Port to listen on
 
 def handle_client(conn, addr, db):
+    r""" 
+    Handles the communication with a connected client.
+
+    Args:
+        conn (socket.socket): The client socket connection.
+        addr (tuple): The client address.
+        db (MiniDatabase): The database instance for processing commands.
+    """
+
     try:
         while True:
             data = conn.recv(1024)
@@ -25,6 +34,10 @@ def handle_client(conn, addr, db):
         print(f"Connection to client ({addr[0]}:{addr[1]}) closed")
 
 def run_server():
+    r"""
+    Sets up and runs the server to listen for incoming connections.
+    """
+    
     try:
         db = MiniDatabase()
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

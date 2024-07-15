@@ -5,6 +5,13 @@ HOST = '127.0.0.1'  # The server's hostname or IP address
 PORT = 8000        # The port used by the server
 
 def send_command(c, command):
+    r"""
+    Send a command to the server and print the response.
+
+    Args:
+        c (socket.socket): The client socket.
+        command (str): The command to send to the server.
+    """
     try:
         c.sendall(command.encode() + b'\n')
         response = c.recv(1024)
@@ -14,6 +21,9 @@ def send_command(c, command):
     
         
 def run_client():
+    r"""
+    Run the client to connect to the server, send commands, and receive responses.
+    """
     c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     c.settimeout(3)
     c.connect((HOST, PORT))
